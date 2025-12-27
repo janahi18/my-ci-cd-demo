@@ -2,13 +2,17 @@ trigger:
 - main
 
 pool:
-  vmimage: ubuntu-latest
+  vmImage: ubuntu-latest
+
+variables:
+  imageName: devopsdemo
 
 steps:
 - task: Docker@2
-  displayName: Build Docker image
   inputs:
-    command: Build
+    containerRegistry: 'ACR-Service-Connection'
+    repository: $(imageName)
+    command: buildAndPush
     Dockerfile: '**/Dockerfile'
     tags: |
-      v1
+      latest
