@@ -1,0 +1,1 @@
+print("Docker + Azure Devops CI pipeline")
